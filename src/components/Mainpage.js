@@ -144,7 +144,7 @@ const Mainpage = ({ Device_data, Alldata_list, Device_name, Devicename }) => {
             parseFloat(rounded_value_device2) < parseFloat(50) && item.id === 'XY00002' ? 'bg-red-500' :
             device2_data_thickness === true && item.id === 'XY00002' ? 'bg-[#0A99DF]' :
             parseFloat(rounded_value_device2) >= parseFloat(75) && device2_data_thickness === false && item.id === 'XY00002' ? 'bg-green-500' :
-            parseFloat(rounded_value_device2) >= parseFloat(50) && parseFloat(rounded_value_device1) < parseFloat(75) && item.id === 'XY00002' ? 'bg-[#ED7014]' :
+            parseFloat(rounded_value_device2) >= parseFloat(50) && parseFloat(rounded_value_device2) < parseFloat(75) && item.id === 'XY00002' ? 'bg-[#ED7014]' :
             item.id === 'XY00002' ? 'bg-white' :
 
             parseFloat(rounded_value_device3) < parseFloat(50) && item.id === 'XY00003' ? 'bg-red-500' :
@@ -189,7 +189,7 @@ const Mainpage = ({ Device_data, Alldata_list, Device_name, Devicename }) => {
            parseFloat(rounded_value_device2) < parseFloat(50) && item.id === 'XY00002' ? 'bg-red-500' :
            device2_data_thickness === true && item.id === 'XY00002' ? 'bg-[#0A99DF]' :
            parseFloat(rounded_value_device2) >= parseFloat(75) && device2_data_thickness === false && item.id === 'XY00002' ? 'bg-green-500' :
-           parseFloat(rounded_value_device2) >= parseFloat(50) && parseFloat(rounded_value_device1) < parseFloat(75) && item.id === 'XY00002' ? 'bg-[#ED7014]' :
+           parseFloat(rounded_value_device2) >= parseFloat(50) && parseFloat(rounded_value_device2) < parseFloat(75) && item.id === 'XY00002' ? 'bg-[#ED7014]' :
            item.id === 'XY00002' ? 'bg-white' :
 
            parseFloat(rounded_value_device3) <= parseFloat(50) && item.id === 'XY00003' ? 'bg-red-500' :
