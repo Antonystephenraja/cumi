@@ -14,7 +14,6 @@ const Dashboard = () => {
             </svg>
           </div>
           <div className="text-sm font-medium  text-gray-600 text-center sm:text-left">
-            
             <p className="text-lg  font-bold card_size text-gray-700 mt-1">37</p>
             <p className="mt-1">Humidity</p>
           </div>
@@ -26,7 +25,6 @@ const Dashboard = () => {
             </svg>
           </div>
           <div className="text-sm font-medium  text-gray-600 text-center sm:text-left">
-            
             <p className="text-lg  font-bold card_size text-gray-700 mt-1">37</p>
             <p className="mt-1">Magnetic Flex</p>
           </div>

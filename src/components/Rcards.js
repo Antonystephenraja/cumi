@@ -111,13 +111,11 @@ else if(parseInt(usertime)===21600){
 }
 
 
-const Current_battery = battery.split(",");
-const Battery_percentage = (Current_battery[0] - 437) * (100 - 0) / (776 - 437) + 0;
-const Battery_Percentage_Value =parseInt(Battery_percentage)
-//convert a signal to percentage
 
+console.log("battery=",battery)
 const signal_percentage= (signal - 0)*(100 - 0 )/(32 - 0)+0;
 const signal_percentage_convert = parseInt(signal_percentage)
+
 
 
 const successtoast =()=>{
@@ -248,20 +246,19 @@ const Device_error =()=>{
     setPopup4(false);
 
   };
-
+  
 
   return (
     <div className="max-w-screen-lg mx-auto ml-4 mr-2">
       <div className="flex items-end justify-end">
         <p className="text-xs font-bold mb-3 mr-2">Last-Data :<span className="text-red-500 font-bold">{time}</span></p>
         <Select  className="w-44" options={Data_freequences} styles={customStyles_2} isSearchable={true}  placeholder={`Clockify -${time_data} `} onChange={handle_dropdown_Change} />
- 
         <input
-              type="number"
-              className=" h-9  bg-gray-50 border border-gray-300 text-gray-900 ml-2 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-[20%] ps-1 p-2.5   dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              placeholder="Thickness"
-              ref={inputRef}
-            />
+            type="number"
+            className=" h-9  bg-gray-50 border border-gray-300 text-gray-900 ml-2 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-[20%] ps-1 p-2.5   dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            placeholder="Thickness"
+            ref={inputRef}
+          />
         <button onClick={handleSubmit} 
           type="button"
           className="mr-3 ml-3 inline-block w-20 h-9 font-bold text-center bg-gradient-to-tl from-purple-700 to-pink-500 uppercase align-middle transition-all rounded-lg cursor-pointer leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 hover:scale-102 active:opacity-85 hover:shadow-soft-xs text-white"
@@ -274,7 +271,7 @@ const Device_error =()=>{
       <div className="mt-2">
         <div className={`flex card border-4 flex-col items-center p-4  rounded-lg shadow-md mb-2 sm:flex-row 
          ${
-        rounded_value < parseFloat(50) ? 'bg-red-500' : 
+        rounded_value < parseFloat(50) ? 'bg-red-500': 
         rounded_value >= parseFloat(50) && rounded_value  < parseFloat(75) ? 'bg-[#ED7014]': 
         rounded_value >= parseFloat(75) && finaly_thickness === false ? 'bg-[#28a33d]' : 
          'bg-[#0A99DF]'} `}>
@@ -294,7 +291,6 @@ const Device_error =()=>{
           </div>
         </div>
       </div>
-
       <div className="grid gap-4 md:grid-cols-3 xl:grid-cols-3 sm:grid-cols-1 mb-5">
         <div className={`flex flex-col border-4 ${parseFloat(device_temp) > 65 || parseFloat(device_temp) < 0  ? 'border-red-500 blink-border' : 'border-white' } card items-center p-4 bg-gray-50 rounded-lg shadow-md mb-4 sm:flex-row`}>
           <div className="p-3 mb-2 mr-4 text-green-500 bg-green-100 rounded-full sm:mb-0">
@@ -321,7 +317,7 @@ const Device_error =()=>{
           </div>
         </div>
         {/* <div className={`flex flex-col border-4 ${Battery_Percentage_Value <25 ?'border-red-500 blink-border':'border-white'}  card items-center p-4 bg-gray-50 rounded-lg shadow-md mb-4 sm:flex-row  `}> */}
-        <div className={`flex flex-col border-4 ${Battery_Percentage_Value < 25 ? 'border-red-500 blink-border' : 'border-white'}  card items-center p-4 bg-gray-50 rounded-lg shadow-md mb-4 sm:flex-row`}>
+        <div className={`flex flex-col border-4 ${battery < 25 ? 'border-red-500 blink-border' : 'border-white'}  card items-center p-4 bg-gray-50 rounded-lg shadow-md mb-4 sm:flex-row`}>
 
           <div className="p-3 mb-2 mr-4 text-yellow-500 bg-yellow-100 rounded-full sm:mb-0">
             <svg
@@ -333,7 +329,7 @@ const Device_error =()=>{
             </svg>
           </div>
           <div className="text-sm font-medium  text-gray-600 text-center sm:text-left">
-            <p className="text-lg card_size font-bold text-gray-700 mt-1">{Battery_Percentage_Value >= 100 ? "100 %" : Battery_Percentage_Value < 0 ? "0 %" : Battery_Percentage_Value + "%"}</p>
+            <p className="text-lg card_size font-bold text-gray-700 mt-1">{battery >= 100 ? "100 %" : battery < 0 ? "0 %" : battery + "%"}</p>
             <p className="mt-1">Battery Level</p>
           </div>
         </div>

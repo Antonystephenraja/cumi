@@ -228,6 +228,7 @@ const Reports = () => {
 
   const handleDownload = async () => {
     try {
+    
       const startDate = new Date(selectedFromDate);
       const endDate = new Date(selectedToDate);
 
@@ -237,8 +238,9 @@ const Reports = () => {
         enddate: endDate
       });
 
-
+      
       const apidata = response.data.data;
+      console.log("api data =",startDate);
       const doc = new jsPDF();
 
         const logo = xymaimg;
@@ -249,18 +251,16 @@ const Reports = () => {
          //cover img  
          doc.addImage(cover, 'JPG',0,0,210,297);
          doc.addPage();
- 
-
-
             const tableHeaders = [
-              ['Device', 'Thickness', 'Battery', 'Device Temp', 'Time'],
+              ['S.No','Device', 'Thickness', 'Battery', 'Device Temp', 'Time'],
             ];
-        
-            const tableData = apidata.map(item => {
-              const rawBatteryPercentage = parseInt((parseInt(item.battery_status.split(",")[0]) - 265) * (100 - 0) / (540 - 265) + 0);
-              const batteryPercentage = Math.max(Math.min(rawBatteryPercentage, 100), 0);
-              const formattedBatteryPercentage = batteryPercentage < 0 ? 0 : (batteryPercentage > 100 ? 100 : batteryPercentage);
+    
+            const tableData = apidata.map((item,index) => {
+              const rawBatteryPercentage = parseInt((parseInt(item.battery_status)));
+              const formattedBatteryPercentage = rawBatteryPercentage < 0 ? 0 : (rawBatteryPercentage > 100 ? 100 : rawBatteryPercentage);
+
               return [
+                index+1,
                 item.device_name,
                 item.thickness,
                 formattedBatteryPercentage,

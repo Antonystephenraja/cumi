@@ -121,12 +121,9 @@ export const limit=  async (req, res) => {
       const limitResponse = await axios.get('https://cumi.xyma.live/backend/fetchAllData');
       const device3 = limitResponse.data.find(item => item.devicename === "XY00003")
       console.log(device3)
-
     }catch(error){
       console.log("error")
     }
-    
-
   }
 
   export const LastUpdated_data = async (req, res) => {
@@ -382,28 +379,37 @@ function parseTimestamp(timestampString) {
 
 export const getdata = async (req, res) => {
   try {
+    
     const a = req.body.device;
     const startdate = new Date(req.body.startdate);
     const enddate = new Date(req.body.enddate);
-
+    
     startdate.setHours(0);
     startdate.setMinutes(0);
-    enddate.setHours(23); // Set end date to end of the day
-    enddate.setMinutes(59); // Set end time to end of the day
+    enddate.setHours(23); 
+    enddate.setMinutes(59); 
+
 
     const formattedStartDate = `${(startdate.getMonth() + 1).toString().padStart(2, '0')}/${startdate.getDate().toString().padStart(2, '0')}/${startdate.getFullYear()}, ${startdate.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' })}`;
     const formattedEndDate = `${(enddate.getMonth() + 1).toString().padStart(2, '0')}/${enddate.getDate().toString().padStart(2, '0')}/${enddate.getFullYear()}, ${enddate.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' })}`;
-
+    
     const api = await fetch("https://cumi.xyma.live/backend/fetchAllData");
     const info = await api.json();
     const flattenedInfo = info.flat();
 
+
+    
     const startDate = new Date(formattedStartDate);
     const endDate = new Date(formattedEndDate);
 
+
+
     const isWithinRange = (timestamp) => {
+      
       const date = new Date(timestamp);
+
       return date >= startDate && date <= endDate;
+      
     };
 
     const DeviceDataInRange = flattenedInfo.filter(item => item.device_name === a && isWithinRange(item.timestamp));

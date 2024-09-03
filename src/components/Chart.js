@@ -9,22 +9,17 @@ const Chart = (chartdata) => {
   const thickness = filterdata.map(item => item.thickness);
   const devicename = filterdata.map(item => item.device_name);
 
-  const battery = filterdata.map(item => {
-    const values = item.battery_status.split(','); 
-    const firstValue = parseInt(values[0]);
-    let Battery_percentage = (firstValue - 437) * (100 - 0) / (776 - 437) + 0;
-    Battery_percentage = Battery_percentage > 100 ? 100 : Battery_percentage < 0 ? 0 : Battery_percentage;
-    Battery_percentage = Number(Battery_percentage.toFixed(2));
-    return Battery_percentage; 
-  });
-
-
-
   
+  const battery = filterdata.map(item=>item.battery_status)
+
+
+
+
 
   const time = filterdata.map(item => item.timestamp);
-
   
+
+
   const Data_freequences = [
     { label: 'XY00001', value: 'XY00001' },
     { label: 'XY00002', value: 'XY00002' },
@@ -58,11 +53,11 @@ const Chart = (chartdata) => {
   }
 
   const data = {
-    labels: time,
+    labels: time.reverse(),
     datasets: [
       {
         label: 'Dataset 1',
-        data: thickness,
+        data: thickness.reverse(),
         fill: false,
         borderColor: 'rgb(75, 192, 192)',
         tension: 0.1

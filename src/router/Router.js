@@ -80,6 +80,8 @@ const Router = () => {
     }
   };
 
+  
+
   return (
     <div>
         <BrowserRouter>
@@ -92,7 +94,6 @@ const Router = () => {
                    Alldata_list={alldata}
                    Device_name = {all_device_data}
                    Devicename = {xy00001Data}
-
                   />}/>
                   <Route path='chart' element={<Chart
                     chartdata={chartId}

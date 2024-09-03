@@ -10,6 +10,7 @@ const Model = ({alldata_list,device_name}) => {
 
   const [selectedItem, setSelectedItem] = useState(null);
 
+  console.log(alldata_list)
   const XY00001Data = device_name.find(item => item.devicename === "XY00001");
   const XY00002Data = device_name.find(item => item.devicename === "XY00002");
   const XY00003Data = device_name.find(item => item.devicename === "XY00003");
@@ -23,14 +24,11 @@ const Model = ({alldata_list,device_name}) => {
   const device4_thickness = parseInt(XY00004Data ?XY00004Data.limit  :"N/A");
   const device5_thickness = parseInt(XY00005Data ?XY00005Data.limit  :"N/A");
   
-
   const device1 = alldata_list["XY00001"];
   const device2 = alldata_list["XY00002"];
   const device3 = alldata_list["XY00003"];
   const device4 = alldata_list["XY00004"];
   const device5 = alldata_list["XY00005"];
-
-
 
   const device1_data = device1 ? device1.thickness : 'N/A';
   const device2_data = device2 ? device2.thickness : 'N/A';
@@ -38,8 +36,6 @@ const Model = ({alldata_list,device_name}) => {
   const device4_data = device4 ? device4.thickness : 'N/A';
   const device5_data = device5 ? device5.thickness : 'N/A';
 
-
-  
   const device1_convert = parseFloat(device1_data)
   const limitvalue = ((device1_convert-0)*(100-0))/(device1_thickness-0)+0;
   const rounded_value_device1 = limitvalue.toFixed(2);
@@ -64,7 +60,6 @@ const Model = ({alldata_list,device_name}) => {
   const rounded_percentage_device4 = parseFloat(rounded_value_devic4);
   const device4_thickness_int = parseFloat(rounded_percentage_device4);
 
-
   const device5_convert = parseFloat(device5_data)
   const device5_limitvalue2 = ((device5_convert-0)*(100-0))/(device5_thickness-0)+0;
   const rounded_value_devic5 = device5_limitvalue2.toFixed(2);
@@ -83,7 +78,6 @@ const Model = ({alldata_list,device_name}) => {
           }
     }
   };
-
 
   const renderColumns = (data) => {
     return data.map((item, index) => (
@@ -153,7 +147,6 @@ const Model = ({alldata_list,device_name}) => {
     { id: 'XY00009:', thickness: 'N/A'},
     { id: 'XY00010:', thickness: 'N/A'},
     // Add more items as needed
-
   ];
   const data2 = [
     { id: 'ID', thickness: 'THICKNESS'},
@@ -168,7 +161,6 @@ const Model = ({alldata_list,device_name}) => {
     { id: 'XY00019:', thickness: 'N/A'},
     { id: 'XY00020:', thickness: 'N/A'},
     // Add more items as needed
-
   ];
   const data3 = [
     { id: 'ID', thickness: 'THICKNESS'},
@@ -183,7 +175,6 @@ const Model = ({alldata_list,device_name}) => {
     { id: 'XY00029:', thickness: 'N/A'},
     { id: 'XY00030:', thickness: 'N/A'},
     // Add more items as needed
-
   ];
   const data4 = [
     { id: 'ID', thickness: 'THICKNESS' },

@@ -40,8 +40,10 @@ const RTables = (device_data) => {
               </thead>
               <tbody className={` divide-y divide-gray-200`}>
                 {alldata.slice().map((data, index) => {
-                  const battery_value = data.battery_status.split(",")[0];
-                  let batteryPercentage = parseInt((battery_value - 437) * (100 - 0) / (776 - 437) + 0);
+                  
+                  const battery_value = data.battery_status;
+              
+                  let batteryPercentage = parseInt((battery_value - 290) * (100 - 0) / (776 - 290) + 0);
 
                   const signal_percentage= (data.signal_strength - 0)*(100 - 0 )/(32 - 0)+0;
                   const signal_percentage_convert = parseInt(signal_percentage)
@@ -51,7 +53,7 @@ const RTables = (device_data) => {
                       <td className="px-2 whitespace-no-wrap text-center text-black">{data.device_name}</td>
                       <td className="px-2 whitespace-no-wrap text-center text-black">{data.thickness}</td>
                       <td className="px-2 whitespace-no-wrap text-center text-black">
-                        {batteryPercentage < 0 ? "0 %" : batteryPercentage > 100 ? "100%" : batteryPercentage + "%"}
+                        {battery_value < 0 ? "0 %" : battery_value > 100 ? "100%" : battery_value + "%"}
                       </td>
 
                       <td className="px-2 whitespace-no-wrap text-center text-black">{signal_percentage_convert +"%"}</td>
